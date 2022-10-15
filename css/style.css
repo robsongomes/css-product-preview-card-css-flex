@@ -1,5 +1,6 @@
 :root {
   --dark-cyan: hsl(158, 36%, 37%);
+  --dark-green: hsl(158, 36%, 15%);
   --cream: hsl(30, 38%, 92%);
   --very-dark-blue: hsl(212, 21%, 14%);
   --dark-grayish-blue: hsl(228, 12%, 48%);
@@ -24,22 +25,23 @@ body {
 .container {
   display: flex;
   background-color: var(--white);
-  width: 37rem;
+  max-width: 37rem;
   font-weight: 500;
   border-radius: 15px;
   overflow: hidden; /* correctly round image border corners */
-}
-
-.product-image {
-  max-width: 50%;
 }
 
 .product {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  flex: 1 0 50%;
   font-family: Montserrat;
   padding: 0 30px;
+}
+
+.product-image {
+  max-width: 100%;
 }
 
 .product-category {
@@ -74,12 +76,22 @@ body {
   font-weight: 700;
 }
 
-.product-price p:last-child {
+.product-price del {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   color: var(--dark-grayish-blue);
   text-decoration: line-through;
   margin-left: 20px;
+}
+
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .add-to-cart {
@@ -99,19 +111,14 @@ body {
 }
 
 .add-to-cart:hover {
-  background-color: var(--very-dark-blue);
+  background-color: var(--dark-green);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
   .container {
     flex-direction: column;
     height: 35rem;
     width: 20rem;
-  }
-
-  .product-image {
-    content: url(../images/image-product-mobile.jpg);
-    max-width: 100%;
   }
 
   .product {
